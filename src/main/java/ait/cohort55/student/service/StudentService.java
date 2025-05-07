@@ -10,12 +10,18 @@ import java.util.Set;
 
 public interface StudentService {
     Boolean addStudent(StudentAddDto studentAddDto);
-    StudentDto findStudent(Long id);
-    StudentDto removeStudent(Long id);
-    StudentAddDto updateStudent(Long id, StudentUpdateDto studentUpdateDto);
-    Boolean addScore(Long id, ScoreDto  scoreDto);
-    List<StudentDto> findStudentsByName(String name);
-    Long getStudentsQuantityByNames(Set<String> names);
-    List<StudentDto> findStudentsByExamNameMinScore(String exam, Integer minScore);
 
+    StudentDto findStudent(Long id);
+
+    StudentDto removeStudent(Long id);
+
+    StudentAddDto updateStudent(Long id, StudentUpdateDto studentUpdateDto);
+
+    Boolean addScore(Long id, ScoreDto scoreDto);
+
+    List<StudentDto> findStudentsByName(String name);
+
+    Long getStudentsQuantityByNames(Set<String> names);
+
+    List<StudentDto> findStudentsByExamNameMinScore(String exam, Integer minScore);
 }

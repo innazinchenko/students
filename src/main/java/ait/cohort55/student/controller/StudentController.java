@@ -5,17 +5,18 @@ import ait.cohort55.student.dto.StudentAddDto;
 import ait.cohort55.student.dto.StudentDto;
 import ait.cohort55.student.dto.StudentUpdateDto;
 import ait.cohort55.student.service.StudentService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashSet;
 import java.util.List;
-
+import java.util.Set;
 
 @RestController
-public class StudentController  {
-    @Autowired
-    private StudentService studentService;
+@RequiredArgsConstructor
+public class StudentController {
+    private final StudentService studentService;
 
     @PostMapping("/student")
     public Boolean addStudent(@RequestBody StudentAddDto studentAddDto) {
@@ -48,11 +49,11 @@ public class StudentController  {
     }
 
     @GetMapping("/quantity/students")
-    public Long getStudentsQuantityByName(@RequestParam List<String> names) {
+    public Long getStudentsQuantityByNames(@RequestParam List<String> names) {
         return studentService.getStudentsQuantityByNames(new HashSet<>(names));
     }
 
-    @GetMapping("/students/exam/{exam}/minScore/{minScore}")
+    @GetMapping("/students/exam/{exam}/minscore/{minScore}")
     public List<StudentDto> findStudentsByExamNameMinScore(@PathVariable String exam, @PathVariable Integer minScore) {
         return studentService.findStudentsByExamNameMinScore(exam, minScore);
     }
